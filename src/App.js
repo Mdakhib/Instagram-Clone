@@ -3,7 +3,8 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import "./App.css";
 import { Post } from "./components";
-import { db } from "./firebase";
+import { auth, db } from "./firebase";
+import { log } from "async";
 
 
 
@@ -39,6 +40,7 @@ function App() {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [user, setUser] = useState(null);
   
   
 
@@ -50,10 +52,51 @@ function App() {
       })));
     });
   }, [])
+
+
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((authUser) => {
+      if (authUser) {
+        //user loged in
+        console.log(authUser);
+        setUser(authUser);
+
+        if (authUser.displayName) {
+          //dont update username
+        } else {
+          //if we just create someone
+          return authUser.updateProfile({
+            displayName: username,
+          });
+        }
+      } else {
+        //user has logged out...
+        setUser(null);
+      }
+    });
+    return () => {
+      //perform some cleanup actions
+      unsubscribe();
+    };
+  }, [user, username]);
   
+
+
   const signUp = (event) => {
     event.preventDefault();
+
+
+    auth
+      .createUserWithEmailAndPassword(email, password)
+      .then((authUser) => {
+        return authUser.user.updateProfile({
+          displayName: username,
+        });
+      })
+      .catch((error) => alert(error.message));
     
+
   };
 
 
