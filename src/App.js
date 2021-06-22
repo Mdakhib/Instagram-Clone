@@ -48,6 +48,9 @@ function App() {
     });
   },[])
 
+  // const signUp = (event) => {
+  //   event.preventDefault();
+  // }
 
 
   return (
@@ -66,7 +69,7 @@ function App() {
         />
       </div>
 
-      <Button>Sign Up</Button>
+      <Button onClick={()=>setOpen(true)}>Sign Up</Button>
 
       {posts.map(({ post, id }) => (
         <Post
