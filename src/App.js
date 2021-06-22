@@ -1,3 +1,4 @@
+import { Modal } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 
 import "./App.css";
@@ -6,6 +7,8 @@ import { db } from "./firebase";
 
 function App() {
   const [posts, setPosts] = useState([]);
+
+  const [open, setOpen] = useState(false);
 
 
   useEffect(() => {
@@ -21,6 +24,14 @@ function App() {
 
   return (
     <div className="app">
+      
+
+      <Modal open={open} onClose={handleClose}>
+        <div style={modalStyle} className={classes.paper}>
+          <h2>I'm a Modal</h2>
+        </div>
+      </Modal>
+
       <div className="app__header">
         <img
           className="app__headerImage"
@@ -29,7 +40,7 @@ function App() {
         />
       </div>
 
-      {posts.map(({post, id}) => (
+      {posts.map(({ post, id }) => (
         <Post
           key={id}
           username={post.username}
