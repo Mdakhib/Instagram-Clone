@@ -1,9 +1,13 @@
 *{
   margin:0;
 }
+body::-webkit-scrollbar {
+  display: none;
+}
+
+
 .app {
   background-color: #fafafa;
-  height: 100vh;
 }
 
 .app__header {

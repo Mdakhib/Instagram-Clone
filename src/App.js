@@ -1,4 +1,5 @@
 import './App.css';
+import { Post } from "./components";
 
 function App() {
   return (
@@ -11,9 +12,11 @@ function App() {
         />
       </div>
 
-      
-
-
+      <Post />
+      <Post />
+      <Post />
+      <Post />
+      <Post />
     </div>
   );
 }
