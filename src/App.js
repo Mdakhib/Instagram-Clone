@@ -146,7 +146,11 @@ function App() {
         />
       </div>
 
-      <Button onClick={() => setOpen(true)}>Sign Up</Button>
+      {user ? (
+        <Button onClick={() => auth.signOut()}>Log Out</Button>
+      ) : (
+        <Button onClick={() => setOpen(true)}>Sign Up</Button>
+      )}
 
       {posts.map(({ post, id }) => (
         <Post
