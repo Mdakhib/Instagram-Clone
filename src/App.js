@@ -1,4 +1,4 @@
-import { Button, Modal } from "@material-ui/core";
+import { Button, Modal,Input } from "@material-ui/core";
 import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core";
 import "./App.css";
@@ -35,9 +35,12 @@ function App() {
   const [modalStyle] = useState(getModalStyle);
 
   const [posts, setPosts] = useState([]);
-
   const [open, setOpen] = useState(false);
-
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  
+  
 
   useEffect(() => {
     db.collection('posts').onSnapshot(snapshot => {
@@ -46,18 +49,49 @@ function App() {
         post: doc.data()
       })));
     });
-  },[])
+  }, [])
+  
+  const signUp = (event) => {
+    event.preventDefault();
+    
+  };
 
-  // const signUp = (event) => {
-  //   event.preventDefault();
-  // }
+
 
 
   return (
     <div className="app">
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
-          <h2>I'm a Modal</h2>
+          <form className="app__signup">
+            <center>
+              <img
+                className="app__headerImage"
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/1200px-Instagram_logo.svg.png"
+                alt=""
+              />
+            </center>
+
+            <Input
+              type="text"
+              value={username}
+              placeholder="username"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Input
+              type="email"
+              value={email}
+              placeholder="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+            <Input
+              type="password"
+              placeholder="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <Button onClick={signUp}>Sign Up</Button>
+          </form>
         </div>
       </Modal>
 
@@ -69,7 +103,7 @@ function App() {
         />
       </div>
 
-      <Button onClick={()=>setOpen(true)}>Sign Up</Button>
+      <Button onClick={() => setOpen(true)}>Sign Up</Button>
 
       {posts.map(({ post, id }) => (
         <Post
