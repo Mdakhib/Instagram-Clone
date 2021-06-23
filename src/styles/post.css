@@ -28,3 +28,28 @@
     font-weight: normal;
     padding: 20px;
 }
+.postCommentBox {
+    display: flex;
+    margin-top: 10px;
+}
+
+.post__input {
+    flex: 1;
+    border: none;
+    padding: 10px;
+    outline: none;
+    border-top: 1px solid lightgray;
+}
+
+.post__button {
+    flex: 0;
+    border: none;
+    border-top: 1px solid lightgray;
+    color: #6082a3;
+    background-color: transparent;
+
+}
+
+.post__comments{
+    padding: 17px;
+}
