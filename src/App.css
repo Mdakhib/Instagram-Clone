@@ -43,5 +43,8 @@ body::-webkit-scrollbar {
 }
 
 .error__msg{
-  
+  display: flex;
+  justify-content: center;
+  height: 12vh;
+  align-items: flex-start;
 }
