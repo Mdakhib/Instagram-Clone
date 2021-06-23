@@ -30,3 +30,13 @@ body::-webkit-scrollbar {
   display: flex;
   flex-direction: column;
 }
+
+.app__post{
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.app__postsRight{
+  margin-left: 20px;
+}

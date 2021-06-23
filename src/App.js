@@ -4,6 +4,7 @@ import { makeStyles } from "@material-ui/core";
 import "./App.css";
 import { Post, ImageUpload } from "./components";
 import { auth, db } from "./firebase";
+import InstagramEmbed from "react-instagram-embed";
 
 
 
@@ -191,14 +192,32 @@ function App() {
         )}
       </div>
 
-      {posts.map(({ post, id }) => (
-        <Post
-          key={id}
-          username={post.username}
-          caption={post.caption}
-          imageUrl={post.imageUrl}
-        />
-      ))}
+      <div className="app__post">
+        <div className="app__postsLeft">
+          {posts.map(({ post, id }) => (
+            <Post
+              key={id}
+              username={post.username}
+              caption={post.caption}
+              imageUrl={post.imageUrl}
+            />
+          ))}
+        </div>
+        <div className="app__postsRight">
+          <InstagramEmbed
+            url="https://instagr.am/p/Zw9o4/"
+            maxWidth={320}
+            hideCaption={false}
+            containerTagName="div"
+            protocol=""
+            injectScript
+            onLoading={() => {}}
+            onSuccess={() => {}}
+            onAfterRender={() => {}}
+            onFailure={() => {}}
+          />
+        </div>
+      </div>
 
       {user?.displayName ? (
         <ImageUpload username={user.displayName} />
