@@ -43,6 +43,7 @@ function Post({postId,user, imageUrl, username, caption }) {
 
   return (
     <div className="post">
+
       <div className="post__header">
         {/* header -> avatar + username */}
         <Avatar

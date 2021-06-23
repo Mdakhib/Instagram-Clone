@@ -1,5 +1,6 @@
 .post__image {
-    width: 100%;
+    width: 450px;
+    height: 50vh;
     object-fit: contain;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
@@ -7,10 +8,15 @@
 }
 
 .post {
-    max-width: 500px;
+    max-width: 450px;
     background-color: white;
     border: 1px solid lightgray;
-    margin-bottom: 45px;
+    margin-bottom: 30px;
+    margin-right: 10px;
+}
+
+.post__container{
+    margin: auto;
 }
 
 .post__header {
@@ -52,4 +58,16 @@
 
 .post__comments{
     padding: 17px;
+}
+@media screen and (max-width:760px) {
+    .post__image {
+        width: 300px;
+
+    }
+    .post {
+        max-width: 300px;
+        margin-bottom: 30px;
+        margin-right: 10px;
+    }
+
 }

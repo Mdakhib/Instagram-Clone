@@ -37,8 +37,7 @@ body::-webkit-scrollbar {
   padding: 20px;
   display: flex;
   justify-content: center;
-}
-
-.app__postsRight{
-  margin-left: 20px;
+  flex-wrap: wrap;
+  margin-right: auto;
+  margin-left: auto;
 }
