@@ -4,7 +4,6 @@ import { makeStyles } from "@material-ui/core";
 import "./App.css";
 import { Post, ImageUpload } from "./components";
 import { auth, db } from "./firebase";
-import InstagramEmbed from "react-instagram-embed";
 
 
 
